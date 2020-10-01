@@ -11,14 +11,5 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SIROG-E/Note_Taker.git"
-  },
-  "bugs": {
-    "url": "https://github.com/SIROG-E/Note_Taker/issues"
-  },
-  "homepage": "https://github.com/SIROG-E/Note_Taker#readme"
+  }
 }
