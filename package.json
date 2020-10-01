@@ -1,14 +1,24 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Description",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SIROG-E/Note_Taker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SIROG-E/Note_Taker/issues"
+  },
+  "homepage": "https://github.com/SIROG-E/Note_Taker#readme"
 }
