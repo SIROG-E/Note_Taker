@@ -10,9 +10,7 @@ var PORT = process.env.PORT || 3000;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname));
-
-
+app.use(express.static(public));
 
 // Setup notes variable
 fs.readFile("db/db.json", "utf8", (err, data) => {
@@ -58,7 +56,7 @@ fs.readFile("db/db.json", "utf8", (err, data) => {
   });
   // update db.json when a note is added or deleted.
   function updateDb() {
-    fs.writeFile("db.db.json", JSON.stringify(notes, "\t"), err => {
+    fs.writeFile("db/db.json", JSON.stringify(notes, '\t'), err => {
       if (err) throw err;
       return true;
     });
