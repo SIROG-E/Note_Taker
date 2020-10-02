@@ -5,13 +5,14 @@ const path = require("path");
 
 // Setup the Express App
 const app = express();
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+app.use(express.static("public"));
+
 
 
 // Setup notes variable
@@ -19,9 +20,9 @@ fs.readFile("db/db.json", "utf8", (err, data) => {
   if (err) throw err;
   var notes = JSON.parse(data);
 
-  //                API routes
+  //            API routes
   //  get route
-  app.get("/api/notes", function(req, res) {
+  app.get("/api/notes", function(_req, res) {
     res.json(notes);
   })
   // post route
@@ -44,23 +45,25 @@ fs.readFile("db/db.json", "utf8", (err, data) => {
     console.log("Note deleted with id: " + req.params.id);
   });
 
-                    // Routes
-  // Display notes.html when notes is accessed
-  app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/notes.html"));
-  });
-  // If no matching route is found default to index
-  app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/index.html"));
-  });
+// Routes
+// Display notes.html when notes is accessed
+app.get("/notes", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/notes.html"));
+});
+// If no matching route is found default to index
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
 
-  // update db.json when note is added or deleted.
-  function updateDb() {
-    fs.writeFile("db/db.json",JSON.stringify(notes,'\t'), err => {
-      if (err) throw err;
-      return true;
-    });
-  }
+// update db.json when note is added or deleted.
+function updateDb() {
+  fs.writeFile("db/db.json",JSON.stringify(notes,'\t'), err => {
+    if (err) throw err;
+    return true;
+  });
+}
+
+ 
 });
 
 // Listener
